@@ -1,54 +1,265 @@
-body{
-   background-color: rgb(139, 173, 217);
+/* General Resets and Box Sizing */
+* {
+    box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
 }
-.main{
-   padding:0px;
-   margin:0px;
-height:650px;
-width: 100%;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('xd.webp');
-background-size: cover;
-background-repeat: no-repeat;
 
-}
-.connect{
-width: 400px;
-color: whitesmoke;
-padding: 10px;
-margin-bottom: 30px;
-box-shadow: 0 0 10px 2px rgb(123, 0, 255);
-}
-.connect:hover{
-    transition: all 0.3s;
-   transform: scale(1.1,1.1);
-
-}
-.result{
-    height: 100px;
+body {
+    background-color: rgb(139, 173, 217);
+    overflow-x: hidden; /* Prevents horizontal scrollbar and the gap */
     width: 100%;
-    margin-bottom: -400px;
+    padding: 0;
+    margin: 0;
 }
-.btn{
-    background-color: rgba(115, 60, 255, 0.551);
-padding: 22px;
 
-margin-top: 100px;
-border-radius: 10px;
-font-size: xx-large;
-color: #ffffff;
-}
-.btn:hover{
-    transition: all 0.3s;
-   transform: scale(1.1,1.1);
-   box-shadow: 0 0 10px rgb(255, 255, 255);
-
-}
-@media  (max-width: 800px) {
- 
-.contacts{
-display: flex;
+/* Main Section */
+.main {
+    padding: 0;
+    margin: 0;
+    height: 650px; /* Keep height fixed, or adjust as needed */
+    width: 100%;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('xd.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; /* Center the background image */
+    display: flex; /* Use flexbox to center content */
     flex-direction: column;
+    justify-content: center; /* Vertically center content */
+    align-items: center; /* Horizontally center content */
+    text-align: center; /* Ensure text inside is centered */
 }
-   .connect{
-width: 250px;}
-  }
+
+.main h1 {
+    font-size: 50px; /* Default font size for larger screens */
+    font-weight: 50px; /* This property should be font-weight: normal | bold | 100-900; */
+    color: #301d04;
+    text-align: center;
+    padding: 0 10px; /* Add some padding to prevent text from touching edges on small screens */
+    word-break: break-word; /* Important: Breaks long words if they exceed the container width */
+    max-width: 90%; /* Ensure heading doesn't take 100% of width, leaving some space */
+    margin: 0 auto; /* Center the heading */
+}
+
+/* Connect Section (Buttons) */
+.connect {
+    width: 400px; /* Default width for larger screens */
+    color: whitesmoke;
+    padding: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 0 10px 2px rgb(123, 0, 255);
+    display: flex; /* Make it a flex container to align icon and text */
+    align-items: center; /* Vertically center icon and text */
+    justify-content: flex-start; /* Align content to the start (left) */
+    gap: 10px; /* Space between icon and text */
+}
+
+.connect:hover {
+    transition: all 0.3s;
+    transform: scale(1.05, 1.05); /* Slightly smaller scale on hover to avoid pushing other elements */
+}
+
+/* Result Section */
+.result {
+    /* height: 100px; /* This height might be too small, review as needed */
+    width: 100%;
+    /* margin-bottom: -400px; /* This negative margin might cause issues with overlapping, review */
+    text-align: center; /* Center the button */
+    padding: 20px 0; /* Add some padding */
+    background-color: rgb(139, 173, 217); /* Added background color to match body */
+}
+
+.result h1 {
+    font-size: 50px; /* Default font size */
+    color: white;
+    text-shadow: 0 0 10px black;
+    padding: 0 10px; /* Add padding to prevent text from touching edges */
+    word-break: break-word; /* Break long words */
+    max-width: 90%;
+    margin: 0 auto 20px auto; /* Center and add margin below heading */
+}
+
+
+.btn {
+    background-color: rgba(115, 60, 255, 0.551);
+    padding: 22px;
+    margin-top: 20px; /* Reduced margin-top for better spacing */
+    border-radius: 10px;
+    font-size: xx-large;
+    color: #ffffff;
+    cursor: pointer; /* Indicate it's clickable */
+    border: none; /* Remove default button border */
+    display: inline-block; /* Allow margin auto to center */
+}
+
+.btn:hover {
+    transition: all 0.3s;
+    transform: scale(1.1, 1.1);
+    box-shadow: 0 0 10px rgb(255, 255, 255);
+}
+
+/* Contacts Section Adjustments */
+.contacts {
+    display: flex;
+    flex-direction: row; /* Default for larger screens */
+    flex-wrap: wrap; /* Allow items to wrap to next line if needed */
+    justify-content: center; /* Center items horizontally */
+    align-items: flex-start; /* Align items to the top */
+    padding: 35px 15px; /* Add horizontal padding for safety */
+    background-color: rgb(139, 173, 217);
+    width: 100%; /* Ensure contacts section takes full width */
+}
+
+.details {
+    width: 100%; /* Ensure details take full width to contain buttons */
+    max-width: 500px; /* Limit max width for better readability on large screens */
+    margin: 20px auto; /* Center the details div */
+    text-align: center; /* Center the connect buttons */
+}
+
+.map {
+    height: 200px; /* Adjusted map height for better visibility */
+    width: 90%; /* Responsive width for map */
+    max-width: 300px; /* Max width for map */
+    margin: 20px auto; /* Center the map */
+    background-color: lightgray; /* Placeholder for map area */
+    border: 1px solid #ccc;
+    /* You had bg-[url('location.png')] and bg-center bg-cover which are Tailwind.
+       If you want to use the image as background here, ensure the path is correct
+       and remove Tailwind's bg- classes from HTML for this element.
+       If you are mixing, ensure consistency.
+       For pure CSS, it would be:
+       background-image: url('location.png');
+       background-size: cover;
+       background-position: center;
+    */
+}
+
+
+/* Gallery Section */
+.gallery {
+    width: 100%;
+    padding: 20px 0; /* Add padding */
+    background-color: rgb(139, 173, 217);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid columns */
+    gap: 15px; /* Space between grid items */
+    padding: 0 15px; /* Add horizontal padding to the grid container */
+}
+
+.grid img {
+    width: 100%; /* Make images responsive within their grid cell */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove extra space below images */
+    border-radius: 8px; /* Apply rounded corners */
+}
+
+/* Footer Adjustments */
+footer {
+    bottom: 0 !important; /* Force footer to bottom, overriding inline style */
+    margin-bottom: 0 !important;
+    width: 100%;
+    /* Keep other footer styles from HTML as they seem fine with Tailwind */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) { /* Adjust breakpoint as needed, common for tablets */
+    .main h1 {
+        font-size: 8vw; /* Smaller font size on medium screens */
+    }
+
+    .connect {
+        width: 85%; /* Make buttons narrower on smaller screens */
+        max-width: 350px; /* Limit max-width to keep them readable */
+        margin-left: auto; /* Center buttons */
+        margin-right: auto;
+    }
+
+    .result h1 {
+        font-size: 7vw; /* Smaller font size for result heading */
+    }
+
+    .btn {
+        padding: 18px; /* Slightly smaller padding for button */
+        font-size: large;
+    }
+
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjust grid for tablets */
+    }
+
+    /* Adjust navbar on smaller screens */
+    nav .max-w-screen-xl {
+        flex-direction: column; /* Stack logo and nav button vertically */
+        align-items: center;
+        padding: 10px;
+    }
+
+    nav button#open {
+        margin-top: 10px; /* Add space below logo */
+    }
+
+    #navbar-dropdown {
+        width: 100%; /* Ensure dropdown takes full width */
+        text-align: center;
+    }
+    #navbar-dropdown ul {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 0;
+    }
+    #navbar-dropdown ul li {
+        width: 100%; /* Ensure list items take full width */
+        margin-bottom: 5px;
+    }
+}
+
+@media (max-width: 480px) { /* Adjust breakpoint for typical mobile phones */
+    .main h1 {
+        font-size: 10vw; /* Even smaller font size, or use specific px */
+        line-height: 1.2; /* Adjust line height for readability */
+    }
+
+    .connect {
+        width: 95%; /* Make buttons fill more of the screen on very small devices */
+        padding: 8px;
+    }
+
+    .result h1 {
+        font-size: 8vw;
+    }
+
+    .btn {
+        padding: 15px;
+        font-size: medium;
+    }
+
+    .contacts {
+        flex-direction: column; /* Stack contact elements vertically */
+        align-items: center;
+    }
+
+    .details {
+        margin-top: 0; /* Adjust margin */
+    }
+
+    .grid {
+        grid-template-columns: 1fr; /* Single column on very small screens */
+        padding: 0 10px; /* Reduce horizontal padding */
+    }
+
+    /* Adjust footer for mobile */
+    footer .grid-cols-1 { /* Assuming this will apply to the main footer grid */
+        grid-template-columns: 1fr; /* Single column layout for footer on small screens */
+        gap: 30px;
+        text-align: center; /* Center footer content */
+    }
+
+    footer .flex.items-center {
+        justify-content: center; /* Center logo and name */
+    }
+    footer .space-x-4 {
+        justify-content: center; /* Center social icons */
+    }
+}
